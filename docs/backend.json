@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user in the RoomVerse application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The user's phone number, used for OTP verification."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the user.",
+          "format": "email"
+        },
+        "dateJoined": {
+          "type": "string",
+          "description": "The date and time the user joined the platform.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "phoneNumber"
+      ]
+    },
+    "Property": {
+      "title": "Property",
+      "description": "Represents a rental property like a PG, hostel, or shared flat.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string", "enum": ["PG", "Hostel", "Shared Flat"] },
+        "location": { "type": "string" },
+        "city": { "type": "string" },
+        "priceRange": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number" },
+            "max": { "type": "number" }
+          }
+        },
+        "amenities": { "type": "array", "items": { "type": "string" } },
+        "mainImageId": { "type": "string" },
+        "galleryImageIds": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Room": {
+      "title": "Room",
+      "description": "Represents a room within a property.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "price": { "type": "number" },
+        "isAvailable": { "type": "boolean" }
+      }
+    },
+    "Review": {
+        "title": "Review",
+        "description": "A user review for a property.",
+        "type": "object",
+        "properties": {
+            "author": {"type": "string"},
+            "avatarImageId": {"type": "string"},
+            "rating": {"type": "number"},
+            "comment": {"type": "string"},
+            "date": {"type": "string", "format": "date"}
+        }
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous",
+      "phone"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user data. Uses path-based ownership for security. Each user can only access their own document. The `userId` parameter corresponds to the Firebase Authentication `uid`."
+        }
+      },
+      {
+        "path": "/properties/{propertyId}",
+        "definition": {
+            "entityName": "Property",
+            "schema": { "$ref": "#/backend/entities/Property" },
+            "description": "Stores all property listings."
+        },
+        "subcollections": [
+            {
+                "path": "/rooms/{roomId}",
+                "definition": {
+                    "entityName": "Room",
+                    "schema": { "$ref": "#/backend/entities/Room"},
+                    "description": "Rooms available within a property."
+                }
+            },
+            {
+                "path": "/reviews/{reviewId}",
+                "definition": {
+                    "entityName": "Review",
+                    "schema": { "$ref": "#/backend/entities/Review" },
+                    "description": "User reviews for the property."
+                }
+            }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+/**
+ * @fileOverview
+ * This ruleset enforces a strict user-ownership model for the RoomVerse application,
+ * with public read access for properties.
+ *
+ * Data Structure:
+ * - User data: /users/{userId}
+ * - Property data: /properties/{propertyId}
+ *
+ * Key Security Decisions:
+ * - Users can only access their own data.
+ * - Anyone can read property listings to allow browsing.
+ * - Only authenticated admins (future) should be able to write to properties.
+ *
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Enforces user-ownership for documents under /users/{userId}.
+     */
+    match /users/{userId} {
+      allow get, update, delete: if isOwner(userId);
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow list: if false;
+    }
+
+    /**
+     * @description Public read access for properties, restricted writes.
+     */
+    match /properties/{propertyId} {
+      allow get, list: if true; // Anyone can view properties
+      allow create, update, delete: if false; // Lock down writes for now
+    }
+    
+    match /properties/{propertyId}/{subcollection}/{docId} {
+       allow get, list: if true; // Allow reading subcollections like rooms and reviews
+       allow create, update, delete: if false; // Lock down writes
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+  }
+}
