@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
-// Firebase provider removed after migrating auth to Supabase
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { Chatbot } from '@/components/Chatbot';
 
 export const metadata: Metadata = {
@@ -33,13 +33,15 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-        <Chatbot />
-        <Toaster />
+        <FirebaseClientProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <Chatbot />
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );

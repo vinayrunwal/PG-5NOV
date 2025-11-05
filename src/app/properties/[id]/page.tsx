@@ -2,7 +2,7 @@
 'use client';
 
 import { properties } from "@/lib/data";
-import { notFound, useParams } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PlaceHolderImages as placeholderImages } from "@/lib/placeholder-images";
 import { Badge } from "@/components/ui/badge";
@@ -14,11 +14,26 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Check, MapPin, X } from "lucide-react";
 import Link from "next/link";
 import { PropertyReviews } from "@/components/PropertyReviews";
+import { useUser } from "@/firebase/auth/use-user";
+import { useEffect, useState } from "react";
 
 export default function PropertyDetailPage() {
   const params = useParams();
+  const router = useRouter();
+  const { user, isUserLoading } = useUser();
   const id = params.id as string;
   const property = properties.find(p => p.id === id);
+  const [selectedRoom, setSelectedRoom] = useState<any>(null);
+
+  useEffect(() => {
+    if (!isUserLoading && !user) {
+      router.push('/login');
+    }
+  }, [isUserLoading, user, router]);
+
+  if (isUserLoading || !user) {
+    return <div>Loading...</div>;
+  }
 
   if (!property) {
     notFound();
@@ -95,7 +110,7 @@ export default function PropertyDetailPage() {
                     <h3 className="font-headline text-xl mb-4">Room Options</h3>
                     <div className="space-y-4">
                         {property.rooms.map(room => (
-                            <div key={room.id} className="flex justify-between items-center p-3 rounded-md border">
+                            <div key={room.id} onClick={() => setSelectedRoom(room)} className={`flex justify-between items-center p-3 rounded-md border cursor-pointer ${selectedRoom?.id === room.id ? 'ring-2 ring-primary' : ''}`}>
                                 <div>
                                     <p className="font-semibold">{room.type}</p>
                                     <p className="text-sm">
@@ -117,8 +132,8 @@ export default function PropertyDetailPage() {
                             </div>
                         ))}
                     </div>
-                    <Button asChild size="lg" className="w-full mt-6 bg-accent hover:bg-accent/90 text-black">
-                        <Link href={`/book/${property.id}`}>Book Now</Link>
+                    <Button asChild size="lg" className="w-full mt-6 bg-accent hover:bg-accent/90 text-black" disabled={!selectedRoom || !selectedRoom.isAvailable}>
+                        <Link href={`/book/${property.id}?room=${selectedRoom?.id}`}>Book Now</Link>
                     </Button>
                 </CardContent>
              </Card>

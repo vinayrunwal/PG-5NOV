@@ -60,7 +60,7 @@ export default function LoginPage() {
               }
 
               toast({ title: 'Signed in', description: 'Welcome back!' });
-              router.push('/dashboard');
+              router.push('/');
               setIsLoading(false);
               return;
             } else {
@@ -81,8 +81,8 @@ export default function LoginPage() {
 
       // Successful sign in
       toast({ title: 'Signed in', description: 'Welcome back!' });
-      // Redirect to dashboard or home
-      router.push('/dashboard');
+      // Redirect to home
+      router.push('/');
     } catch (err: any) {
         console.error('Login Error:', err);
         const msg = String(err?.message || 'Could not sign in.');
@@ -112,7 +112,7 @@ export default function LoginPage() {
                 toast({ title: 'Login Failed', description: String(retryErr.message || retryErr), variant: 'destructive' });
               } else {
                 toast({ title: 'Signed in', description: 'Welcome back!' });
-                router.push('/dashboard');
+                router.push('/');
               }
             } else {
               toast({ title: 'Email not confirmed', description: 'Please check your inbox for a confirmation link.', variant: 'destructive' });

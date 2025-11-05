@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,16 +8,28 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { properties } from "@/lib/data";
 import { CreditCard, Landmark, Wallet } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, useParams, useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 
-export default function BookingPage({ params }: { params: { id: string } }) {
-    const property = properties.find(p => p.id === params.id);
+export default function BookingPage() {
+    const params = useParams();
+    const id = params.id as string;
+    const property = properties.find(p => p.id === id);
+    const searchParams = useSearchParams();
+    const roomId = searchParams.get('room');
+
+    const selectedRoom = useMemo(() => {
+        return property?.rooms.find(r => r.id === roomId);
+    }, [property, roomId]);
 
     if (!property) {
         notFound();
     }
     
     const availableRooms = property.rooms.filter(r => r.isAvailable);
+    const securityDeposit = selectedRoom ? selectedRoom.price * 2 : 0;
+    const totalPayable = selectedRoom ? selectedRoom.price + securityDeposit : 0;
+
 
     return (
         <div className="bg-muted/40">
@@ -50,7 +64,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="room-type">Select Room Type</Label>
-                                        <Select>
+                                        <Select defaultValue={selectedRoom?.id}>
                                             <SelectTrigger id="room-type">
                                                 <SelectValue placeholder="Choose an available room" />
                                             </SelectTrigger>
@@ -75,18 +89,22 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                             <CardContent className="space-y-4">
                                 <div className="font-semibold">{property.title}</div>
                                 <div className="text-sm text-muted-foreground">{property.location}</div>
-                                <div className="flex justify-between items-center pt-4 border-t">
-                                    <span>Monthly Rent</span>
-                                    <span className="font-semibold">INR 12,000</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <span>Security Deposit</span>
-                                    <span className="font-semibold">INR 24,000</span>
-                                </div>
-                                <div className="flex justify-between items-center text-lg font-bold pt-4 border-t">
-                                    <span>Total Payable Now</span>
-                                    <span>INR 36,000</span>
-                                </div>
+                                {selectedRoom && (
+                                    <>
+                                        <div className="flex justify-between items-center pt-4 border-t">
+                                            <span>Monthly Rent</span>
+                                            <span className="font-semibold">INR {selectedRoom.price.toLocaleString()}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span>Security Deposit</span>
+                                            <span className="font-semibold">INR {securityDeposit.toLocaleString()}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-lg font-bold pt-4 border-t">
+                                            <span>Total Payable Now</span>
+                                            <span>INR {totalPayable.toLocaleString()}</span>
+                                        </div>
+                                    </>
+                                )}
                             </CardContent>
                             <CardFooter className="flex-col gap-4 items-stretch">
                                <p className="text-sm text-muted-foreground text-center">Select Payment Method</p>

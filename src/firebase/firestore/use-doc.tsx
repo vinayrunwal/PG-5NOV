@@ -48,7 +48,7 @@ export function useDoc<T = any>(
   const [error, setError] = useState<FirestoreError | Error | null>(null);
 
   useEffect(() => {
-    if (!memoizedDocRef) {
+    if (!memoizedDocRef || !memoizedDocRef.path || memoizedDocRef.path.includes('undefined')) {
       setData(null);
       setIsLoading(false);
       setError(null);

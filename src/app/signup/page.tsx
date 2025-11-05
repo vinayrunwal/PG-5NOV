@@ -76,18 +76,6 @@ export default function SignupPage() {
         console.debug('Auto-confirm failed:', confirmErr);
       }
 
-      // Attempt to sign the user in immediately
-      try {
-        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-        if (!signInError) {
-          toast({ title: 'Signed in', description: 'Welcome!' });
-          router.push('/dashboard');
-          return;
-        }
-      } catch (siErr) {
-        console.debug('Immediate sign-in failed:', siErr);
-      }
-
       toast({ title: 'Account Created!', description: 'Please verify your email (if required) and log in.' });
       router.push('/login');
     } catch (err: any) {
