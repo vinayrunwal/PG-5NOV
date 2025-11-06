@@ -2,134 +2,134 @@
   "placeholderImages": [
     {
       "id": "hero-1",
-      "description": "Modern apartment building exterior at dusk",
-      "imageUrl": "https://picsum.photos/seed/hero1/1920/1080",
-      "imageHint": "modern apartment"
+      "description": "Find Your Home Away From Home",
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "imageHint": "students studying in a common area"
     },
     {
       "id": "property-1-1",
-      "description": "Bright and airy living room with a sofa",
-      "imageUrl": "https://picsum.photos/seed/prop11/800/600",
-      "imageHint": "living room"
+      "description": "Ganesh PG",
+      "imageUrl": "https://storage.googleapis.com/idx-dev-testing-public-2/ganesh-pg.png",
+      "imageHint": "modern house with a pool"
     },
     {
       "id": "property-1-2",
       "description": "Modern bedroom with a comfortable bed",
-      "imageUrl": "https://picsum.photos/seed/prop12/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?bedroom-interior",
       "imageHint": "bedroom interior"
     },
     {
       "id": "property-1-3",
       "description": "Clean and modern kitchen",
-      "imageUrl": "https://picsum.photos/seed/prop13/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?modern-kitchen",
       "imageHint": "modern kitchen"
     },
     {
       "id": "property-2-1",
-      "description": "Cozy shared room with bunk beds",
-      "imageUrl": "https://picsum.photos/seed/prop21/800/600",
-      "imageHint": "hostel room"
+      "description": "Luxury PG",
+      "imageUrl": "https://storage.googleapis.com/idx-dev-testing-public-2/luxury-pg.png",
+      "imageHint": "modern apartment building"
     },
     {
       "id": "property-2-2",
       "description": "Common area with seating and tables",
-      "imageUrl": "https://picsum.photos/seed/prop22/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?common-area",
       "imageHint": "common area"
     },
     {
       "id": "property-2-3",
       "description": "Exterior view of a modern hostel building",
-      "imageUrl": "https://picsum.photos/seed/prop23/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?building-exterior",
       "imageHint": "building exterior"
     },
     {
       "id": "property-3-1",
-      "description": "Stylish private room in a shared flat",
-      "imageUrl": "https://picsum.photos/seed/prop31/800/600",
-      "imageHint": "stylish bedroom"
+      "description": "Atlantis PG",
+      "imageUrl": "https://storage.googleapis.com/idx-dev-testing-public-2/atlantis-pg.png",
+      "imageHint": "spacious living room with a view"
     },
     {
       "id": "property-3-2",
       "description": "Shared living space with a television",
-      "imageUrl": "https://picsum.photos/seed/prop32/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?shared-apartment",
       "imageHint": "shared apartment"
     },
     {
       "id": "property-3-3",
       "description": "Balcony with a city view",
-      "imageUrl": "https://picsum.photos/seed/prop33/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?city-view",
       "imageHint": "city view"
     },
     {
       "id": "property-4-1",
-      "description": "Spacious studio apartment",
-      "imageUrl": "https://picsum.photos/seed/prop41/800/600",
-      "imageHint": "studio apartment"
+      "description": "Homies Living PG",
+      "imageUrl": "https://storage.googleapis.com/idx-dev-testing-public-2/homies-living-pg.png",
+      "imageHint": "cozy bedroom with a nightstand"
     },
     {
       "id": "property-5-1",
       "description": "Luxury penthouse living room",
-      "imageUrl": "https://picsum.photos/seed/prop51/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?luxury-penthouse",
       "imageHint": "luxury penthouse"
     },
     {
       "id": "property-6-1",
       "description": "Student dormitory room",
-      "imageUrl": "https://picsum.photos/seed/prop61/800/600",
+      "imageUrl": "https://source.unsplash.com/800x600/?student-room",
       "imageHint": "student room"
     },
     {
       "id": "testimonial-1",
       "description": "Portrait of a smiling young woman",
-      "imageUrl": "https://picsum.photos/seed/test1/100/100",
+      "imageUrl": "https://source.unsplash.com/100x100/?woman-smiling",
       "imageHint": "woman smiling"
     },
     {
       "id": "testimonial-2",
       "description": "Portrait of a young professional man",
-      "imageUrl": "https://picsum.photos/seed/test2/100/100",
+      "imageUrl": "https://source.unsplash.com/100x100/?man-portrait",
       "imageHint": "man portrait"
     },
     {
       "id": "testimonial-3",
       "description": "Portrait of a happy student",
-      "imageUrl": "https://picsum.photos/seed/test3/100/100",
+      "imageUrl": "https://source.unsplash.com/100x100/?happy-student",
       "imageHint": "happy student"
     },
     {
       "id": "map-placeholder",
       "description": "A placeholder map showing a city layout",
-      "imageUrl": "https://picsum.photos/seed/map1/1200/400",
+      "imageUrl": "https://source.unsplash.com/1200x400/?city-map",
       "imageHint": "city map"
     },
     {
       "id": "about-us-hero",
       "description": "A diverse group of young professionals collaborating in a modern office space",
-      "imageUrl": "https://picsum.photos/seed/about1/1200/500",
+      "imageUrl": "https://source.unsplash.com/1200x500/?team-collaboration",
       "imageHint": "team collaboration"
     },
     {
       "id": "blog-post-1",
       "description": "A person writing in a notebook in a cafe",
-      "imageUrl": "https://picsum.photos/seed/blog1/400/300",
+      "imageUrl": "https://source.unsplash.com/400x300/?person-writing",
       "imageHint": "person writing"
     },
     {
       "id": "blog-post-2",
       "description": "A vibrant city street with people walking",
-      "imageUrl": "https://picsum.photos/seed/blog2/400/300",
+      "imageUrl": "https://source.unsplash.com/400x300/?city-street",
       "imageHint": "city street"
     },
     {
       "id": "blog-post-3",
       "description": "A group of friends laughing together in a living room",
-      "imageUrl": "https://picsum.photos/seed/blog3/400/300",
+      "imageUrl": "https://source.unsplash.com/400x300/?friends-laughing",
       "imageHint": "friends laughing"
     },
     {
       "id": "login-hero",
       "description": "A stylish doorway with a welcome mat",
-      "imageUrl": "https://picsum.photos/seed/login1/800/1200",
+      "imageUrl": "https://source.unsplash.com/800x1200/?open-door",
       "imageHint": "open door"
     }
   ]

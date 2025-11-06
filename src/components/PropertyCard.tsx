@@ -1,7 +1,5 @@
-
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Property } from '@/lib/types';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -19,9 +17,7 @@ interface PropertyCardProps {
 
 export function PropertyCard({ property }: PropertyCardProps) {
   const mainImage = placeholderImages.find(p => p.id === property.mainImageId);
-  // check auth on demand via Supabase
   const { toast } = useToast();
-  // This is a mock implementation. In a real app, you'd get this from a user's profile.
   const isFavorited = false; 
 
   const handleFavoriteClick = async (e: React.MouseEvent) => {
@@ -32,7 +28,6 @@ export function PropertyCard({ property }: PropertyCardProps) {
       toast({ title: 'Please log in', description: 'You need to be logged in to save properties.', variant: 'destructive' });
       return;
     }
-    // In a real app, you would call a function here to update the user's favorites in Firestore.
     toast({
       title: isFavorited ? 'Property Unfavorited' : 'Property Favorited!',
       description: `${property.title} has been ${isFavorited ? 'removed from' : 'added to'} your favorites.`,
@@ -43,20 +38,22 @@ export function PropertyCard({ property }: PropertyCardProps) {
     <Card className="overflow-hidden transition-all hover:shadow-lg duration-300 group">
       <Link href={`/properties/${property.id}`} prefetch={false}>
         <div className="relative h-56 w-full">
-          {mainImage && (
-            <Image
+          {mainImage ? (
+            <img
               src={mainImage.imageUrl}
               alt={property.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
               data-ai-hint={mainImage.imageHint}
             />
+          ) : (
+            <div className="w-full h-full bg-muted" />
           )}
-          <Badge className="absolute top-4 left-4" variant="secondary">{property.type}</Badge>
+          <div className="absolute inset-0 bg-black/20" />
+          <Badge className="absolute top-4 left-4 z-10" variant="secondary">{property.type}</Badge>
           <Button
             size="icon"
             variant="ghost"
-            className="absolute top-2 right-2 h-9 w-9 rounded-full bg-background/70 text-rose-500 hover:bg-background"
+            className="absolute top-2 right-2 h-9 w-9 rounded-full bg-background/70 text-rose-500 hover:bg-background z-10"
             onClick={handleFavoriteClick}
             aria-label="Favorite this property"
           >

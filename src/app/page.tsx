@@ -11,7 +11,11 @@ import { HeroSearch } from '@/components/HeroSearch';
 import Link from 'next/link';
 
 export default function Home() {
-  const heroImage = placeholderImages.find(p => p.id === 'hero-1');
+  const heroImage = {
+    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    description: 'A beautiful modern house',
+    imageHint: 'A two-story white house with large windows and a well-manicured lawn.'
+  };
 
   return (
     <div className="flex flex-col">
@@ -29,10 +33,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center gap-6 px-4">
           <h1 className="text-4xl md:text-6xl font-headline font-bold drop-shadow-lg">
-            Find Your Perfect Co-living Space
+            Find Your Home Away From Home
           </h1>
           <p className="text-lg md:text-xl max-w-2xl">
-            Discover curated PGs, hostels, and shared flats with premium amenities.
+            Search for student accommodations near your college with ease.
           </p>
           <HeroSearch />
         </div>
@@ -41,7 +45,7 @@ export default function Home() {
       <section id="featured-properties" className="container mx-auto">
         <AnimateOnScroll>
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-            Featured Properties
+            All Accommodations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProperties.map((property, index) => (

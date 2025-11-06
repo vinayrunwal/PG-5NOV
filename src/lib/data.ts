@@ -1,15 +1,16 @@
+
 import type { Property, Testimonial, WhyChooseUsItem, FAQ, BlogPost } from './types';
 
 export const properties: Property[] = [
   {
     id: 'p1',
-    title: 'Modern Co-living in Downtown',
+    title: 'Ganesh PG',
     type: 'PG',
-    location: 'Koregaon Park, Pune',
-    city: 'Pune',
-    coordinates: { lat: 18.536, lng: 73.894 },
+    location: '45, College Road, Nungambakkam, Chennai',
+    city: 'Chennai',
+    coordinates: { lat: 13.06, lng: 80.24 },
     priceRange: { min: 12000, max: 18000 },
-    amenities: ['Wifi', 'AC', 'Power Backup', 'Housekeeping', 'Laundry', 'Meals'],
+    amenities: ['Wi-Fi', 'Food', 'Housekeeping'],
     mainImageId: 'property-1-1',
     galleryImageIds: ['property-1-1', 'property-1-2', 'property-1-3'],
     rooms: [
@@ -23,33 +24,31 @@ export const properties: Property[] = [
   },
   {
     id: 'p2',
-    title: 'Student Hub near University',
-    type: 'Hostel',
-    location: 'Bandra, Mumbai',
-    city: 'Mumbai',
-    coordinates: { lat: 19.056, lng: 72.84
-     },
-    priceRange: { min: 9000, max: 15000 },
-    amenities: ['Wifi', 'AC', 'Laundry', 'Common Kitchen', 'TV'],
+    title: 'Luxury PG',
+    type: 'PG',
+    location: '90, Vidya Vihar, Pilani',
+    city: 'Pilani',
+    coordinates: { lat: 28.37, lng: 75.60 },
+    priceRange: { min: 10000, max: 15000 },
+    amenities: ['Wi-Fi', 'Cooler', 'Food'],
     mainImageId: 'property-2-1',
     galleryImageIds: ['property-2-1', 'property-2-2', 'property-2-3'],
     rooms: [
       { id: 'r3', type: 'Private', price: 15000, isAvailable: false },
       { id: 'r4', type: 'Shared (2 beds)', price: 11000, isAvailable: true },
-      { id: 'r5', type: 'Shared (3+ beds)', price: 9000, isAvailable: true },
+      { id: 'r5', type: 'Shared (3+ beds)', price: 10000, isAvailable: true },
     ],
     reviews: [],
   },
   {
     id: 'p3',
-    title: 'Luxury Shared Flat',
-    type: 'Shared Flat',
-    location: 'Hauz Khas, Delhi',
-    city: 'Delhi',
-    coordinates: { lat: 28.55, lng: 77.20
-     },
-    priceRange: { min: 20000, max: 25000 },
-    amenities: ['Wifi', 'AC', 'Power Backup', 'Housekeeping', 'Laundry', 'Parking', 'Fully Furnished'],
+    title: 'Atlantis PG',
+    type: 'PG',
+    location: '56, Adyar, Chennai',
+    city: 'Chennai',
+    coordinates: { lat: 13.00, lng: 80.25 },
+    priceRange: { min: 11000, max: 25000 },
+    amenities: ['Wi-Fi', 'Food'],
     mainImageId: 'property-3-1',
     galleryImageIds: ['property-3-1', 'property-3-2', 'property-3-3'],
     rooms: [
@@ -61,19 +60,18 @@ export const properties: Property[] = [
   },
   {
     id: 'p4',
-    title: 'Affordable Student PG',
+    title: 'Homies Living PG',
     type: 'PG',
-    location: 'Marathahalli, Bangalore',
-    city: 'Bangalore',
-    coordinates: { lat: 12.956, lng: 77.699
-     },
-    priceRange: { min: 8000, max: 12000 },
-    amenities: ['Wifi', 'Meals', 'Laundry'],
+    location: '15, Hauz Khas Village, Delhi',
+    city: 'Delhi',
+    coordinates: { lat: 28.55, lng: 77.20 },
+    priceRange: { min: 16000, max: 22000 },
+    amenities: ['Wi-Fi', 'AC', 'Housekeeping'],
     mainImageId: 'property-4-1',
     galleryImageIds: ['property-4-1', 'property-2-2', 'property-1-2'],
     rooms: [
-      { id: 'r7', type: 'Shared (2 beds)', price: 10000, isAvailable: true },
-      { id: 'r8', type: 'Shared (3+ beds)', price: 8000, isAvailable: true },
+      { id: 'r7', type: 'Shared (2 beds)', price: 18000, isAvailable: true },
+      { id: 'r8', type: 'Shared (3+ beds)', price: 16000, isAvailable: true },
     ],
     reviews: [],
   },
@@ -115,7 +113,7 @@ export const properties: Property[] = [
   },
 ];
 
-export const featuredProperties = properties.slice(0, 3);
+export const featuredProperties = properties.slice(0, 4);
 
 export const testimonials: Testimonial[] = [
   {
